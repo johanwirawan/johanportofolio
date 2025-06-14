@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Portfolio Website - Johan Wirawan</title>
+<link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+/>
+<style>
+/* --- Mulai CSS dari kode yang Anda berikan --- */
+
+/* Universal Styles */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --primary-color: #000000; /* Hitam */
+  --secondary-color: #333333; /* Abu-abu gelap untuk kontras */
+  --bg-color: hsl(0, 0%, 95%); /* Putih tidak terlalu terang */
+  --text-color: #000000; /* Hitam */
+  --main-dark: hsl(0, 0%, 90%); /* Putih agak gelap untuk background section */
+  --dark-grey: hsl(0, 0%, 80%); /* Abu-abu terang untuk box-shadow atau elemen lain */
+  --light-grey: #505050; /* Menyesuaikan agar lebih terlihat di putih */
+  --box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2); /* Shadow lebih lembut */
+
+  /* Warna untuk service items */
+  --service-pink: #FFC0CB; /* Merah muda */
+  --service-yellow: #FFFFCC; /* Kuning muda */
+  --service-green: #90EE90; /* Hijau muda */
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  scroll-behavior: smooth;
+}
+
+body {
+  background-image: url('https://raw.githubusercontent.com/johanwirawan/tinaa/refs/heads/main/87c696e8-b7a2-40cd-9928-101b8d5a852a.jpeg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: var(--bg-color); /* Fallback color */
+  color: var(--text-color);
+  line-height: 1.6;
+}
+
+/* Kunci: Hapus min-height: 100vh dari section umum dan atur padding default */
+section {
+  min-height: auto; /* Hanya mengambil tinggi sesuai konten */
+  padding: 8rem 9% 6rem; /* Padding default untuk semua section konten (desktop) */
+}
+
+/* Home Section - Tetap 100vh agar mengisi seluruh viewport */
+.home {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 3rem;
+  flex-direction: row-reverse;
+  position: relative;
+  padding-top: 10rem; /* Sesuaikan padding-top agar tidak tertutup header */
+  padding-bottom: 2rem;
+}
+
+/* Header */
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 2rem 9%;
+  background: var(--main-dark);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  box-shadow: var(--box-shadow);
+}
+
+.logo {
+  font-size: 2.5rem;
+  color: var(--text-color);
+  font-weight: 600;
+  cursor: default;
+}
+
+.menu-toggle {
+  display: none; /* Hidden on desktop */
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  cursor: pointer;
+}
+
+nav a {
+  font-size: 1.7rem;
+  color: var(--text-color);
+  margin-left: 4rem;
+  transition: 0.3s ease;
+}
+
+nav a:hover,
+nav a.active {
+  color: var(--primary-color);
+}
+
+/* Home Section Content & Image */
+.home-img img {
+  width: 15rem;
+  height: 15rem;
+  object-fit: cover;
+  border-radius: 50%;
+  box-shadow: var(--box-shadow);
+  animation: floatImage 4s ease-in-out infinite;
+}
+
+@keyframes floatImage {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-2.4rem);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.home-content {
+  max-width: 60rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.home-content h1 {
+  font-size: 5.6rem;
+  font-weight: 700;
+  line-height: 1.3;
+  margin-bottom: 0.5rem;
+}
+
+.home-content h1 span {
+  color: var(--primary-color);
+}
+
+.home-content .typing-text {
+  font-size: 2.5rem;
+  font-weight: 300;
+  color: var(--primary-color);
+  min-height: 3rem; /* Pastikan ada tinggi minimum agar cursor terlihat */
+  text-align: center;
+  margin-bottom: 2rem;
+  position: relative; /* Untuk posisi cursor */
+}
+
+.home-content .typing-text .cursor {
+  display: inline-block;
+  background-color: var(--primary-color);
+  width: 0.3rem;
+  height: 2.5rem;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  animation: blinkCursor 0.7s infinite alternate;
+}
+
+@keyframes blinkCursor {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 0.8rem;
+    width: 100%;
+}
+
+.social-icons a {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 4rem;
+  height: 4rem;
+  background: transparent;
+  border: 0.2rem solid var(--primary-color);
+  border-radius: 50%;
+  font-size: 2rem;
+  color: var(--primary-color);
+  margin: 0 0.8rem;
+  transition: 0.5s ease;
+}
+
+.social-icons a:hover {
+  background: var(--primary-color);
+  color: var(--bg-color);
+  box-shadow: 0 0 1rem var(--primary-color);
+}
+
+.btn {
+  display: inline-block;
+  padding: 1rem 2.8rem;
+  background: var(--primary-color);
+  border-radius: 4rem;
+  box-shadow: 0 0 1rem var(--primary-color);
+  font-size: 1.6rem;
+  color: var(--bg-color);
+  letter-spacing: 0.1rem;
+  font-weight: 600;
+  transition: 0.5s ease;
+}
+
+.btn:hover {
+  background: var(--bg-color);
+  color: var(--primary-color);
+  box-shadow: 0 0 1rem var(--primary-color);
+}
+
+/* Scroll Down Button */
+.scroll-down-btn {
+    position: absolute;
+    bottom: 3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 3rem;
+    color: var(--primary-color);
+    animation: bounce 1.5s infinite;
+    z-index: 99;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateX(-50%) translateY(0);
+    }
+    40% {
+        transform: translateX(-50%) translateY(-15px);
+    }
+    60% {
+        transform: translateX(-50%) translateY(-7px);
+    }
+}
+
+
+/* Section Titles */
+section h1 {
+  text-align: center;
+  font-size: 4.5rem;
+  margin-bottom: 5rem;
+  color: var(--text-color);
+}
+
+section h1 span {
+  color: var(--primary-color);
+}
+
+/* Style for section titles that include icons */
+.section-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+/* Style for Red Icons (sesuai Font Awesome) */
+.icon-red {
+  color: var(--primary-color);
+  font-size: 3.5rem;
+}
+
+
+/* About Section Styling */
+.about {
+    background: var(--main-dark);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 8rem 9% 6rem; /* Padding konsisten untuk section konten */
+}
+
+.about-content {
+    max-width: 80rem;
+    padding: 2.5rem;
+    background: var(--dark-grey);
+    border-radius: 1rem;
+    box-shadow: var(--box-shadow);
+    color: var(--text-color);
+    text-align: left;
+}
+
+.about-content p {
+    font-size: 1.8rem;
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    color: var(--text-color);
+}
+
+/* Untuk tombol di About Section */
+.about-btn {
+    display: none; /* Hidden by default, JavaScript will reveal it */
+    margin-top: 2rem;
+}
+
+/* Services Section */
+.services {
+  background: var(--main-dark);
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem;
+  padding: 8rem 9% 6rem; /* Padding konsisten untuk section konten */
+}
+
+.service-item {
+  padding: 3rem 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  margin-bottom: 0;
+  transition: 0.3s ease;
+  box-shadow: var(--box-shadow);
+  flex: 1 1 30rem;
+  max-width: 35rem;
+  color: var(--text-color);
+}
+
+/* Warna background untuk setiap item service */
+.service-hvac-installation {
+    background: var(--service-pink);
+}
+.service-repair-troubleshooting {
+    background: var(--service-yellow);
+}
+.service-routine-maintenance {
+    background: var(--service-green);
+}
+
+.service-item:hover {
+    transform: translateY(-1rem);
+    box-shadow: 0 0 2rem var(--primary-color);
+}
+
+.service-icon {
+  font-size: 5rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+.service-item h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--primary-color);
+}
+
+.service-item p {
+  font-size: 1.6rem;
+  color: var(--secondary-color);
+}
+
+/* Skills Section */
+.skills {
+    padding: 8rem 9% 6rem; /* Padding konsisten untuk section konten */
+    display: flex; /* Tambahkan ini jika skill item berada langsung di skills section */
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 3rem; /* Jarak antar skill item */
+    flex-direction: column; /* Mengatur arah kolom agar skill item tersusun vertikal */
+    align-items: center; /* Memastikan skill item terpusat */
+}
+
+.skill {
+  margin-bottom: 0;
+  flex: 1 1 calc(50% - 3rem); /* Tetap responsif */
+  max-width: 50rem; /* Sesuaikan lebar maksimum */
+  width: 100%; /* Agar skill-bar mengisi penuh item */
+}
+
+.skill h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.skill-bar {
+  background: var(--dark-grey);
+  border-radius: 0.5rem;
+  height: 2rem;
+  overflow: hidden;
+  position: relative;
+}
+
+.skill-progress {
+  background: var(--primary-color);
+  height: 100%;
+  border-radius: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 1rem;
+  color: var(--bg-color);
+  font-weight: 500;
+  transition: width 1.5s ease-in-out;
+}
+
+/* NEW: Facts Section Styling (Disesuaikan agar 4 kolom seperti gambar) */
+.facts {
+    background: var(--dark-grey);
+    padding: 8rem 9% 6rem; /* Padding konsisten untuk section konten */
+    text-align: center;
+    display: flex;
+    flex-direction: column; /* Tetap kolom untuk judul jika ada */
+    justify-content: center;
+    align-items: center;
+    min-height: auto;
+}
+
+.facts h1 { /* Jika Anda ingin judul di section facts, tambahkan h1 di HTML */
+  margin-bottom: 3rem;
+}
+
+.facts-container {
+    display: flex;
+    flex-wrap: wrap; /* Izinkan item untuk wrap ke baris berikutnya */
+    justify-content: center; /* Pusatkan item secara horizontal */
+    gap: 3rem; /* Jarak antar fact-item */
+    width: 100%;
+    max-width: 120rem; /* Batasi lebar container agar tidak terlalu lebar di layar besar */
+}
+
+.fact-item {
+    background: var(--main-dark);
+    padding: 2.5rem 2rem;
+    border-radius: 1rem;
+    box-shadow: var(--box-shadow);
+    /* KUNCI: Flex-basis untuk 4 kolom di desktop, dan fallback untuk mobile */
+    flex: 1 1 calc(25% - 3rem); /* Untuk 4 kolom, dikurangi gap */
+    max-width: 25rem; /* Batasi lebar maksimum setiap item */
+    min-width: 18rem; /* Batas lebar minimum agar tidak terlalu kecil */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+}
+
+.fact-icon {
+    font-size: 4rem;
+    color: var(--light-grey); /* Warna ikon abu-abu pudar */
+    margin-bottom: 1rem;
+}
+
+.fact-number {
+    font-size: 3.8rem;
+    font-weight: 700;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.fact-text {
+    font-size: 1.6rem;
+    color: var(--secondary-color);
+    text-align: center;
+}
+
+/* Education & Experience Sections */
+.education, .experience {
+    padding: 8rem 9% 6rem; /* Padding konsisten untuk section konten */
+}
+
+.education h1, .experience h1 {
+    margin-bottom: 3rem;
+}
+
+.education-item, .experience-item {
+    background: var(--dark-grey);
+    padding: 2.5rem;
+    border-radius: 1rem;
+    margin-bottom: 0;
+    box-shadow: var(--box-shadow);
+    transition: 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-direction: column; /* Default stack image on top of text for smaller screens */
+    text-align: center; /* Default text align for smaller screens */
+    flex: 1 1 calc(50% - 3rem);
+    max-width: 50rem;
+}
+
+.education-item:hover, .experience-item:hover {
+    transform: translateY(-0.5rem);
+    box-shadow: 0 0 1.5rem var(--primary-color);
+}
+
+.experience-image {
+    flex-shrink: 0;
+    margin-bottom: 1rem;
+}
+
+.experience-image img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 0.2rem solid var(--primary-color);
+    box-shadow: 0 0 0.8rem var(--primary-color);
+}
+
+.experience-details {
+    flex-grow: 1;
+    text-align: left; /* Teks default di sebelah kiri */
+}
+
+.education-item h2, .experience-item h2 {
+    font-size: 2.2rem;
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.education-item h3, .experience-item h3 {
+    font-size: 1.8rem;
+    color: var(--text-color);
+    margin-bottom: 1rem;
+}
+
+.education-item p, .experience-item p {
+    font-size: 1.6rem;
+    color: var(--light-grey);
+}
+
+/* Contact Section */
+.contact {
+    background: var(--bg-color);
+    padding: 8rem 9% 8rem; /* Padding atas dan bawah lebih besar untuk contact */
+    text-align: center;
+}
+
+.contact h2 {
+  font-size: 4rem;
+  margin-bottom: 5rem;
+  color: var(--text-color);
+  text-align: center;
+}
+
+.contact-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3rem;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.contact-form {
+  flex: 1 1 40rem;
+  background: var(--dark-grey);
+  padding: 3rem;
+  border-radius: 1rem;
+  box-shadow: var(--box-shadow);
+  max-width: 50rem;
+}
+
+.contact-form .form-group {
+  margin-bottom: 1.5rem;
+}
+
+.contact-form label {
+  display: block;
+  font-size: 1.6rem;
+  margin-bottom: 0.8rem;
+  color: var(--text-color);
+  text-align: left;
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 1.2rem;
+  background: var(--main-dark);
+  border-radius: 0.5rem;
+  font-size: 1.6rem;
+  color: var(--text-color);
+  border: 0.1rem solid var(--primary-color);
+  resize: vertical;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  box-shadow: 0 0 0.8rem var(--primary-color);
+}
+
+.contact-form .btn {
+  width: 100%;
+  display: block;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.contact-info {
+  flex: 1 1 35rem;
+  background: var(--dark-grey);
+  padding: 3rem;
+  border-radius: 1rem;
+  box-shadow: var(--box-shadow);
+  text-align: left;
+}
+
+.contact-info h3 {
+  font-size: 2.5rem;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+}
+
+/* Styling for the new contact text */
+.contact-info .contact-talk-text {
+  font-size: 1.4rem;
+  color: var(--light-grey);
+  margin-bottom: 1rem;
+  line-height: 1.5;
+}
+
+.contact-info p {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: var(--text-color);
+}
+
+.contact-info p a {
+  color: var(--primary-color);
+  transition: 0.3s ease;
+}
+
+.contact-info p a:hover {
+  text-decoration: underline;
+}
+
+.contact-info .social-icons {
+  margin-top: 2rem;
+  text-align: left;
+  justify-content: flex-start;
+}
+
+.contact-info .social-icons a {
+  font-size: 2.2rem;
+  width: 4.5rem;
+  height: 4.5rem;
+  margin: 0 0.8rem 0 0;
+}
+
+/* Responsiveness */
+@media (min-width: 1200px) {
+  html {
+    font-size: 55%;
+  }
+}
+
+@media (min-width: 992px) {
+    .skill {
+        flex: 1 1 calc(25% - 3rem); /* Bisa lebih banyak kolom skill di layar besar */
+    }
+}
+
+@media (min-width: 769px) {
+    header {
+      padding: 2rem 9%;
+    }
+
+    /* Kunci: Padding konsisten untuk semua section konten di desktop */
+    section {
+      padding: 8rem 9% 6rem; /* Default padding untuk desktop */
+    }
+
+    .home {
+        padding-top: 10rem;
+        padding-bottom: 2rem;
+    }
+
+    /* Override padding untuk Contact jika ingin sedikit lebih banyak di atas/bawah */
+    .contact {
+        padding-top: 8rem;
+        padding-bottom: 8rem;
+    }
+
+    .home-img img {
+        width: 15rem;
+        height: 15rem;
+    }
+
+    .education-item, .experience-item {
+        flex-direction: row;
+        text-align: left;
+    }
+    .experience-image {
+        margin-right: 1.5rem;
+        margin-bottom: 0;
+    }
+    .experience-image img {
+        width: 80px;
+        height: 80px;
+    }
+    .experience-details {
+        text-align: left;
+    }
+}
+
+
+@media (max-width: 991px) {
+  header {
+    padding: 2rem 4%;
+  }
+
+  /* Kunci: Padding konsisten untuk semua section konten di mobile besar */
+  section {
+    padding: 7rem 4% 5rem; /* Sedikit lebih kecil untuk mobile/tablet */
+  }
+
+  .home-img img {
+    width: 12rem;
+    height: 12rem;
+  }
+
+  /* Responsif untuk Facts Section (2 kolom di tablet) */
+  .fact-item {
+      flex: 1 1 calc(50% - 3rem);
+      max-width: calc(50% - 3rem);
+  }
+}
+
+@media (max-width: 768px) {
+  header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2rem 9%;
+  }
+
+  .menu-toggle {
+    display: block;
+    position: absolute;
+    right: 2rem;
+    top: 2rem;
+  }
+
+  nav {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 1rem 9%;
+    background: var(--main-dark);
+    border-top: 0.1rem solid rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+    transform: translateY(-200%);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav.active {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  nav a {
+    display: block;
+    margin: 1.5rem 0;
+    text-align: center;
+    font-size: 2rem;
+  }
+
+  .home {
+    flex-direction: column-reverse;
+  }
+
+  .home-content h1 {
+    font-size: 4rem;
+  }
+
+  .home-content .typing-text {
+    font-size: 2rem;
+  }
+
+  .home-img img {
+    width: 10rem;
+    height: 10rem;
+    margin-top: 4rem;
+  }
+
+  .home-content .social-icons {
+    margin-top: 1.5rem;
+    margin-bottom: 0;
+    justify-content: center;
+  }
+  .home-content .social-icons a {
+    margin: 0 0.5rem;
+  }
+
+
+  .service-item,
+  .skill,
+  .education-item,
+  .experience-item,
+  .about-content {
+      flex: 1 1 90%;
+      max-width: none;
+      margin-bottom: 2rem;
+  }
+
+  .contact-container {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  .contact-form, .contact-info {
+      width: 90%;
+  }
+
+  .scroll-down-btn {
+    bottom: 1rem;
+    font-size: 2.5rem;
+  }
+
+  /* Kunci: Padding konsisten untuk semua section konten di mobile kecil */
+  .about, .services, .skills, .facts, .education, .experience, .contact {
+      padding: 6rem 4% 6rem; /* Padding 6rem di atas dan bawah untuk mobile */
+  }
+}
+
+@media (max-width: 450px) {
+  html {
+    font-size: 50%;
+  }
+
+  .home-content h1 {
+    font-size: 3.5rem;
+  }
+  .home-content .typing-text {
+    font-size: 1.8rem;
+  }
+  .home-img img {
+    width: 8rem;
+    height: 8rem;
+  }
+
+  .contact-form, .contact-info {
+      padding: 2rem;
+  }
+  /* Kunci: Sesuaikan padding lagi jika diperlukan untuk layar yang sangat kecil */
+  .about, .services, .skills, .facts, .education, .experience, .contact {
+      padding: 5rem 4% 5rem; /* Sedikit lebih kecil lagi untuk layar sangat kecil */
+  }
+
+  /* Responsif untuk Facts Section (1 kolom di mobile sangat kecil) */
+  .fact-item {
+      flex: 1 1 100%;
+      max-width: 100%;
+  }
+}
+
+/* --- Selesai CSS --- */
+</style>
+</head>
+<body>
+<header>
+  <a href="#" class="logo">WELCOME</a>
+  <div class="menu-toggle" id="mobile-menu">
+    <i class="fa fa-bars"></i>
+  </div>
+  <nav>
+    <a href="#home" class="active">Home</a>
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#skills">Skills</a>
+    <a href="#facts">Facts</a> <a href="#education">Education</a>
+    <a href="#experience">Experience</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="home" id="home">
+  <div class="home-content">
+    <h1>Hi, It's <span>Johan Wirawan</span></h1>
+    <h3 class="typing-text"><span></span><span class="cursor"></span></h3>
+    <div class="social-icons">
+      <a href="https://id.linkedin.com/in/johan-wirawan-670539232" target="_blank"
+        ><i class="fa-brands fa-linkedin"></i
+      ></a>
+      <a href="https://www.tiktok.com/@ora_apa_apa?_t=ZS-8xCmA8iW6JY&_r=1" target="_blank"
+        ><i class="fa-brands fa-tiktok"></i
+      ></a>
+      <a href="https://www.facebook.com/johan.wirawan.10" target="_blank"
+        ><i class="fa-brands fa-facebook-f"></i
+      ></a>
+      <a href="https://www.instagram.com/johanwiirawan?igsh=MXdpcGZjdDBoZzJmMQ==" target="_blank"
+        ><i class="fa-brands fa-instagram"></i
+      ></a>
+    </div>
+  </div>
+  <div class="home-img">
+    <img
+      src="https://raw.githubusercontent.com/johanwirawan/tinaa/refs/heads/main/IMG_20250501_210715_747.webp"
+      alt="Profile Picture"
+    />
+  </div>
+  <a href="#about" class="scroll-down-btn"
+    ><i class="fa-solid fa-angles-down"></i
+  ></a>
+</section>
+
+<section class="about" id="about">
+  <h1>About <span>Me</span></h1>
+  <div class="about-content">
+    <p class="typing-about-text" aria-live="polite"></p>
+    <a href="#contact" class="btn about-btn" style="display: none;">Contact Me</a>
+  </div>
+</section>
+
+<section class="services" id="services">
+  <h1 class="section-title">My Services <i class="fas fa-tools icon-red"></i></h1>
+  <div class="service-item service-hvac-installation">
+    <i class="fa-solid fa-screwdriver service-icon"></i>
+    <h2>HVAC System Installation</h2>
+    <p>
+      Installing heating, ventilation, and air conditioning systems in new
+      buildings or renovation projects, including residential, commercial,
+      and industrial spaces.
+    </p>
+  </div>
+  <div class="service-item service-repair-troubleshooting">
+    <i class="fa-solid fa-wrench service-icon"></i>
+    <h2>Repair and Troubleshooting</h2>
+    <p>
+      Diagnosing and fixing issues in HVAC systems such as refrigerant
+      leaks, fan motor failures, or thermostat malfunctions.
+    </p>
+  </div>
+  <div class="service-item service-routine-maintenance">
+    <i class="fa-solid fa-gear service-icon"></i>
+    <h2>Routine Maintenance and Servicing</h2>
+    <p>
+      Performing regular inspections and cleaning of HVAC components
+      (filters, coils, ducting, etc.).
+    </p>
+  </div>
+</section>
+
+<section class="skills" id="skills">
+  <h1 class="section-title">My Soft Skills <i class="fas fa-users icon-red"></i></h1>
+  <div class="skill">
+    <h2>Discipline</h2>
+    <div class="skill-bar">
+      <div class="skill-progress" style="width: 90%"></div>
+    </div>
+  </div>
+  <div class="skill">
+    <h2>Problem Solving</h2>
+    <div class="skill-bar">
+      <div class="skill-progress" style="width: 85%"></div>
+    </div>
+  </div>
+  <div class="skill">
+    <h2>Teamwork</h2>
+    <div class="skill-bar">
+      <div class="skill-progress" style="width: 75%"></div>
+    </div>
+  </div>
+  <div class="skill">
+    <h2>Communication</h2>
+    <div class="skill-bar">
+      <div class="skill-progress" style="width: 75%"></div>
+    </div>
+  </div>
+</section>
+
+<section class="facts" id="facts">
+  <div class="facts-container">
+    <div class="fact-item">
+      <div class="fact-icon"><i class='fas fa-fire'></i></div> <div class="fact-number" data-target="22">0</div>
+      <div class="fact-text">Years Old</div>
+    </div>
+    <div class="fact-item">
+      <div class="fact-icon"><i class='fas fa-mug-hot'></i></div> <div class="fact-number" data-target="360+">0+</div>
+      <div class="fact-text">Cup Of Coffee</div>
+    </div>
+    <div class="fact-item">
+      <div class="fact-icon"><i class='fas fa-users'></i></div> <div class="fact-number" data-target="19+">0+</div>
+      <div class="fact-text">Project Completed</div>
+    </div>
+    <div class="fact-item">
+      <div class="fact-icon"><i class='fas fa-trophy'></i></div> <div class="fact-number" data-target="10+">0+</div>
+      <div class="fact-text">Champion in everything</div>
+    </div>
+  </div>
+</section>
+
+<section class="education" id="education">
+  <h1 class="section-title">My Education <i class="fas fa-graduation-cap icon-red"></i></h1>
+  <div class="education-item">
+    <h2>SMK BINAKARYA</h2>
+    <h3>Tecnical Kendaraan Ringan - 2018-2021</h3>
+    <p>
+      Melakukan perawatan dan perbaikan ringan hingga menengah pada sistem
+      kendaraan ringan seperti sistem bahan bakar, sistem rem, transmisi
+      manual/otomatis, sistem kemudi, dan suspensi.
+    </p>
+  </div>
+  <div class="education-item">
+    <h2>SMP BANI TAQWA</h2>
+    <h3>Education - 2015-2018</h3>
+    <p>Belajar tentang agama dan matematika.</p>
+  </div>
+</section>
+
+<section class="experience" id="experience">
+  <h1 class="section-title">My Experience <i class="fas fa-briefcase icon-red"></i></h1>
+  <div class="experience-item">
+    <div class="experience-image">
+      <img
+        src="https://raw.githubusercontent.com/johanwirawan/tinaa/refs/heads/main/IMG_20250605_160644.jpg"
+        alt="Air Handling Unit"
+      />
+    </div>
+    <div class="experience-details">
+      <h2>Visual Inspection</h2>
+      <h3>Air Handling Unit (AHU)</h3>
+      <p>
+        Check the general condition of the unit, including casing, joints,
+        and internal components.
+      </p>
+    </div>
+  </div>
+  <div class="experience-item">
+    <div class="experience-image">
+      <img
+        src="https://raw.githubusercontent.com/johanwirawan/tinaa/refs/heads/main/IMG_20250301_145029.jpg"
+        alt="AC Floor Standing"
+      />
+    </div>
+    <div class="experience-details">
+      <h2>Recharging refrigerant</h2>
+      <h3>AC Floor Standing</h3>
+      <p>
+        Inspect the unit for signs of refrigerant shortage (e.g., reduced
+        cooling, ice formation, abnormal pressure).
+      </p>
+    </div>
+  </div>
+  <div class="experience-item">
+    <div class="experience-image">
+      <img
+        src="https://raw.githubusercontent.com/johanwirawan/tinaa/refs/heads/main/IMG-20250522-WA0007.jpg"
+        alt="AC Split Ducted"
+      />
+    </div>
+    <div class="experience-details">
+      <h2>Welding</h2>
+      <h3>AC Split Ducted</h3>
+      <p>
+        Collaborated with the installation team in the fabrication and
+        installation of AHU units, including platforms, brackets, and
+        ducting supports.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <h2>Contact <span>Me</span></h2>
+  <div class="contact-container">
+    <form action="https://formspree.io/f/xdkzzalk" method="POST" class="contact-form">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input
+          type="text"
+          id="name"
+          name="name"
+          placeholder="Your Name"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          name="email"
+          placeholder="Your Email"
+          required
+        />
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          rows="6"
+          placeholder="Your Message"
+          required
+        ></textarea>
+      </div>
+      <button type="submit" class="btn">Send Message</button>
+    </form>
+
+    <div class="contact-info">
+      <h3>Get in Touch</h3>
+      <p class="contact-talk-text">Let's talk about everything! <br> Don't like forms? Send me an email. 👋</p>
+      <p>
+        Email:
+        <a href="mailto:johanwirawan525@gmail.com" class="highlight-email"
+          >johanwirawan525@gmail.com</a
+        >
+      </p>
+      <p>Phone: +628151851990</p>
+      <div class="social-icons">
+        <a href="https://id.linkedin.com/in/johan-wirawan-670539232" target="_blank"
+          ><i class="fa-brands fa-linkedin"></i
+        ></a>
+        <a href="https://www.tiktok.com/@ora_apa_apa?_t=ZS-8xCmA8iW6JY&_r=1" target="_blank"
+          ><i class="fa-brands fa-tiktok"></i
+        ></a>
+        <a href="https://www.facebook.com/johan.wirawan.10" target="_blank"
+          ><i class="fa-brands fa-facebook-f"></i
+        ></a>
+        <a href="https://www.instagram.com/johanwiirawan?igsh=MXdpcGZjdDBoZzJmMQ==" target="_blank"
+          ><i class="fa-brands fa-instagram"></i
+        ></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+// JavaScript dari index.html (Typing Effect Home Section)
+const typingText = document.querySelector(".typing-text span");
+const cursor = document.querySelector(".cursor");
+const words = ["An AC Contractor", "HVAC Specialist", "Climate Control Expert"];
+let wordIndex = 0;
+let charIndex = 0;
+let isDeleting = false;
+
+function typeEffect() {
+  const currentWord = words[wordIndex];
+  const displayedText = isDeleting
+    ? currentWord.substring(0, charIndex--)
+    : currentWord.substring(0, charIndex++);
+
+  typingText.textContent = displayedText;
+
+  // Adjust cursor position based on text width
+  const spanWidth = typingText.offsetWidth;
+  const cursorWidth = cursor.offsetWidth;
+  cursor.style.left = `${spanWidth + 5}px`; // Add a small margin
+
+  if (!isDeleting && charIndex === currentWord.length) {
+    isDeleting = true;
+    setTimeout(typeEffect, 2000); // Pause before deleting
+  } else if (isDeleting && charIndex === 0) {
+    isDeleting = false;
+    wordIndex = (wordIndex + 1) % words.length;
+    setTimeout(typeEffect, 500); // Pause before typing next word
+  } else {
+    setTimeout(typeEffect, isDeleting ? 100 : 200);
+  }
+}
+
+// JavaScript untuk About Me Typing Effect
+const aboutTypingTextElement = document.querySelector(".typing-about-text");
+const aboutButton = document.querySelector(".about-btn");
+const aboutText = `I am a 22-year-old, Air Conditioning (AC) Contractor with a strong passion for mechanical systems and climate control technology. I am fascinated by how modern HVAC systems improve comfort and energy efficiency in our daily lives, and I am dedicated to delivering high-quality, reliable solutions. I have hands-on experience in installing, maintaining, and repairing residential and commercial air conditioning systems. My expertise includes understanding complex cooling systems, electrical wiring, and refrigerant handling. I also stay updated with the latest advancements in AC technology to ensure optimal performance and environmental sustainability. In addition to my technical skills, I value customer satisfaction and take pride in providing responsive and detail-oriented service. I look forward to growing further in this industry and contributing to innovative, energy-efficient cooling solutions.`;
+let aboutCharIndex = 0;
+
+function typeAboutEffect() {
+  if (aboutCharIndex < aboutText.length) {
+    aboutTypingTextElement.textContent += aboutText.charAt(aboutCharIndex);
+    aboutCharIndex++;
+    const delay = aboutText.charAt(aboutCharIndex - 1).match(/\s/) ? 100 : 20; // Slow down for spaces
+    setTimeout(typeAboutEffect, delay);
+  } else {
+    if (aboutButton) {
+      aboutButton.style.display = "inline-block"; // Show button
+    }
+  }
+}
+
+// JavaScript for Fact Counting Animation
+const factItems = document.querySelectorAll('.fact-item');
+const sectionFacts = document.querySelector('.facts');
+let hasAnimated = false;
+
+function animateFact(factElement) {
+  const numberElement = factElement.querySelector('.fact-number');
+  const rawTarget = numberElement.getAttribute('data-target');
+  const hasPlus = rawTarget.includes('+');
+  const target = parseInt(rawTarget.replace('+', ''), 10);
+  const duration = 2000;
+  let startTime = null;
+
+  function easeOutQuad(t) {
+    return t * (2 - t);
+  }
+
+  function animate(currentTime) {
+    if (!startTime) startTime = currentTime;
+    const progress = (currentTime - startTime) / duration;
+
+    if (progress < 1) {
+      let value = Math.floor(easeOutQuad(progress) * target);
+      numberElement.textContent = hasPlus ? value + '+' : value;
+      requestAnimationFrame(animate);
+    } else {
+      numberElement.textContent = hasPlus ? target + '+' : target;
+    }
+  }
+  requestAnimationFrame(animate);
+}
+
+const observer = new IntersectionObserver((entries, observer) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting && !hasAnimated) {
+      factItems.forEach(item => {
+        animateFact(item);
+      });
+      hasAnimated = true;
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.5 });
+
+document.addEventListener("DOMContentLoaded", () => {
+  typeEffect();
+  setTimeout(typeAboutEffect, 1000);
+  if(sectionFacts) {
+    observer.observe(sectionFacts);
+  }
+});
+
+// Mobile menu toggle
+const mobileMenu = document.getElementById("mobile-menu");
+const nav = document.querySelector("nav");
+
+if (mobileMenu && nav) {
+  mobileMenu.addEventListener("click", () => {
+    nav.classList.toggle("active");
+  });
+}
+
+// Scroll active link highlighting
+const sections = document.querySelectorAll('section[id]');
+window.addEventListener('scroll', () => {
+  let current = '';
+  sections.forEach(section => {
+    const sectionTop = section.offsetTop;
+    const sectionHeight = section.clientHeight;
+    if (pageYOffset >= sectionTop - sectionHeight / 3) {
+      current = section.getAttribute('id');
+    }
+  });
+
+  nav.querySelectorAll('a').forEach(link => {
+    link.classList.remove('active');
+    if (link.getAttribute('href').includes(current)) {
+      link.classList.add('active');
+    }
+  });
+});
+</script>
+</body>
+</html>
